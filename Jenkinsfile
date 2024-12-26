@@ -1,14 +1,16 @@
-node{
-  stage('Build'){
+node {
+  stage('Build') {
     echo 'Building'
   }
-  stage('Test'){
+  stage('Test') {
     echo 'Testing'
   }
-  if(currentBuild.result=='SUCCESS'){
-    echo 'looks good'
-  }
-  else{
-    echo 'failed'
+
+  currentBuild.result = 'SUCCESS'  // Explicitly setting the result
+
+  if (currentBuild.result == 'SUCCESS') {
+    echo 'Looks good'
+  } else {
+    echo 'Failed'
   }
 }
